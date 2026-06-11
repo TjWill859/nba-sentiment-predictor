@@ -5,7 +5,8 @@
     "home_team": "OKC",
     "away_team": "SAS",
     "data_files": [
-      "data/raw/youtube/youtube_SAS_OKC_G1_20260610_1948_comments.json"
+      "data/raw/youtube/youtube_SAS_OKC_G1_20260610_1948_comments.json",
+      "data/raw/espn/espn_SAS_OKC_G1_20260611_1501.json"
     ],
     "result": 0
   },
@@ -15,7 +16,8 @@
     "home_team": "NYK",
     "away_team": "CLE",
     "data_files": [
-      "data/raw/youtube/youtube_CLE_NYK_G1_20260610_1948_comments.json"
+      "data/raw/youtube/youtube_CLE_NYK_G1_20260610_1948_comments.json",
+      "data/raw/espn/espn_NYK_SAS_20260609_1946.json"
     ],
     "result": 1
   },
@@ -25,7 +27,8 @@
     "home_team": "OKC",
     "away_team": "SAS",
     "data_files": [
-      "data/raw/youtube/youtube_SAS_OKC_G2_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_SAS_OKC_G2_20260610_1949_comments.json",
+      "data/raw/espn/espn_NYK_SAS_20260609_1946.json"
     ],
     "result": 1
   },
@@ -45,7 +48,8 @@
     "home_team": "SAS",
     "away_team": "OKC",
     "data_files": [
-      "data/raw/youtube/youtube_OKC_SAS_G3_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_OKC_SAS_G3_20260610_1949_comments.json",
+      "data/raw/espn/espn_OKC_SAS_G3_20260611_1501.json"
     ],
     "result": 0
   },
@@ -55,7 +59,8 @@
     "home_team": "CLE",
     "away_team": "NYK",
     "data_files": [
-      "data/raw/youtube/youtube_NYK_CLE_G3_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_NYK_CLE_G3_20260610_1949_comments.json",
+      "data/raw/espn/espn_NYK_CLE_G3_20260611_1502.json"
     ],
     "result": 0
   },
@@ -65,7 +70,8 @@
     "home_team": "SAS",
     "away_team": "OKC",
     "data_files": [
-      "data/raw/youtube/youtube_OKC_SAS_G4_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_OKC_SAS_G4_20260610_1949_comments.json",
+      "data/raw/espn/espn_OKC_SAS_G4_20260611_1502.json"
     ],
     "result": 1
   },
@@ -75,7 +81,8 @@
     "home_team": "CLE",
     "away_team": "NYK",
     "data_files": [
-      "data/raw/youtube/youtube_NYK_CLE_G4_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_NYK_CLE_G4_20260610_1949_comments.json",
+      "data/raw/espn/espn_NYK_CLE_G4_20260611_1502.json"
     ],
     "result": 0
   },
@@ -85,7 +92,8 @@
     "home_team": "OKC",
     "away_team": "SAS",
     "data_files": [
-      "data/raw/youtube/youtube_SAS_OKC_G5_20260610_1949_comments.json"
+      "data/raw/youtube/youtube_SAS_OKC_G5_20260610_1949_comments.json",
+      "data/raw/espn/espn_NYK_CLE_G3_20260611_1502.json"
     ],
     "result": 1
   },
@@ -95,7 +103,8 @@
     "home_team": "SAS",
     "away_team": "OKC",
     "data_files": [
-      "data/raw/youtube/youtube_OKC_SAS_G6_20260610_1950_comments.json"
+      "data/raw/youtube/youtube_OKC_SAS_G6_20260610_1950_comments.json",
+      "data/raw/espn/espn_OKC_SAS_G6_20260611_1502.json"
     ],
     "result": 1
   },
@@ -105,7 +114,8 @@
     "home_team": "OKC",
     "away_team": "SAS",
     "data_files": [
-      "data/raw/youtube/youtube_SAS_OKC_G7_20260610_1950_comments.json"
+      "data/raw/youtube/youtube_SAS_OKC_G7_20260610_1950_comments.json",
+      "data/raw/espn/espn_NYK_CLE_G3_20260611_1502.json"
     ],
     "result": 0
   },
@@ -115,7 +125,8 @@
     "home_team": "SAS",
     "away_team": "NYK",
     "data_files": [
-      "data/raw/youtube/youtube_NYK_SAS_G1_20260610_1950_comments.json"
+      "data/raw/youtube/youtube_NYK_SAS_G1_20260610_1950_comments.json",
+      "data/raw/espn/espn_NYK_SAS_G1_20260611_1502.json"
     ],
     "result": 0
   },
@@ -125,7 +136,8 @@
     "home_team": "SAS",
     "away_team": "NYK",
     "data_files": [
-      "data/raw/youtube/youtube_NYK_SAS_G2_20260610_1950_comments.json"
+      "data/raw/youtube/youtube_NYK_SAS_G2_20260610_1950_comments.json",
+      "data/raw/espn/espn_NYK_SAS_G2_20260611_1502.json"
     ],
     "result": 0
   },
@@ -135,7 +147,8 @@
     "home_team": "NYK",
     "away_team": "SAS",
     "data_files": [
-      "data/raw/youtube/youtube_SAS_NYK_G3_20260610_1950_comments.json"
+      "data/raw/youtube/youtube_SAS_NYK_G3_20260610_1950_comments.json",
+      "data/raw/espn/espn_SAS_NYK_G3_20260611_1502.json"
     ],
     "result": 0
   },
@@ -146,7 +159,18 @@
     "away_team": "SAS",
     "data_files": [
       "data/raw/espn/espn_NYK_SAS_20260609_1946.json",
-      "data/raw/youtube/youtube_NYK_SAS_G4_20260609_1956_comments.json"
+      "data/raw/youtube/youtube_NYK_SAS_G4_20260609_1956_comments.json",
+      "data/raw/espn/espn_NYK_CLE_G3_20260611_1502.json"
+    ],
+    "result": 1
+  },
+  {
+    "game_id": "NYK_SAS_G4",
+    "date": "2026-06-13",
+    "home_team": "SAS",
+    "away_team": "NYK",
+    "data_files": [
+      
     ],
     "result": null
   }

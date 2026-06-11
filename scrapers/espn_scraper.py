@@ -27,16 +27,10 @@ HEADERS = {
 }
 
 TEAM_KEYWORDS = {
-    "NYK": ["knicks", "new york knicks", "nyk", "new york"],
-    "SAS": ["spurs", "san antonio spurs", "sas", "san antonio"],
-    "BOS": ["celtics", "boston celtics", "boston"],
-    "MIA": ["heat", "miami heat", "miami"],
-    "GSW": ["warriors", "golden state warriors", "golden state"],
-    "LAL": ["lakers", "los angeles lakers", "los angeles lakers"],
-    "DEN": ["nuggets", "denver nuggets", "denver"],
-    "PHX": ["suns", "phoenix suns", "phoenix"],
-    "CLE": ["cavaliers", "cleveland cavaliers", "cleveland"],
-    "OKC": ["thunder", "oklahoma city thunder", "oklahoma city"],
+    "NYK": ["knicks", "new york knicks", "new york"],
+    "SAS": ["spurs", "san antonio spurs", "san antonio", "wembanyama", "wemby"],
+    "OKC": ["thunder", "oklahoma city thunder", "oklahoma city", "sga", "gilgeous-alexander"],
+    "CLE": ["cavaliers", "cleveland cavaliers", "cleveland", "harden"],
 }
 
 logging.basicConfig(
