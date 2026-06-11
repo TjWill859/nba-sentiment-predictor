@@ -1,19 +1,3 @@
-"""
-NBA injury report scraper.
-Primary: Ball Don't Lie API v1 (free, no auth needed)
-Fallback: NBA.com official injury JSON
-
-Produces a structured injury DataFrame used as features in the classifier:
-  - is_injured / status (out, questionable, probable, available)
-  - player importance tier (star, starter, bench)
-  - team injury load score (0-1)
-
-Usage:
-    python injury_scraper.py                        # NYK vs SAS (default)
-    python injury_scraper.py --team1 NYK --team2 SAS
-    python injury_scraper.py --test                 # mock data, no network
-"""
-
 import requests
 import pandas as pd
 import json
@@ -23,7 +7,7 @@ import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# Config 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data" / "raw"
@@ -102,7 +86,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-# ── Mock data ─────────────────────────────────────────────────────────────────
+# Mock data 
 
 MOCK_INJURIES = [
     {
@@ -132,7 +116,7 @@ MOCK_INJURIES = [
 ]
 
 
-# ── Fetchers ──────────────────────────────────────────────────────────────────
+# Fetchers 
 
 def fetch_bdl_injuries(team_abbr: str) -> list[dict]:
     """Fetch injuries for a team from Ball Don't Lie API v1."""
@@ -170,10 +154,7 @@ def fetch_bdl_injuries(team_abbr: str) -> list[dict]:
 
 
 def fetch_nba_official_injuries() -> list[dict]:
-    """
-    Fallback: fetch from NBA.com's official injury JSON.
-    Returns raw list — caller filters by team.
-    """
+
     log.info("  Fetching NBA.com official injury report...")
     try:
         resp = requests.get(NBA_INJURIES_URL, headers=HEADERS, timeout=12)
@@ -199,7 +180,7 @@ def fetch_nba_official_injuries() -> list[dict]:
     return results
 
 
-# ── Feature engineering ───────────────────────────────────────────────────────
+# Feature engineering 
 
 def classify_player_tier(player_name: str) -> str:
     """Return star/starter/bench/unknown for a player."""
@@ -208,11 +189,7 @@ def classify_player_tier(player_name: str) -> str:
 
 
 def compute_team_injury_load(team_df: pd.DataFrame) -> float:
-    """
-    Compute a 0-1 injury load score for a team.
-    Higher = more impactful players are out/questionable.
-    Formula: sum(severity * tier_weight) / max_possible
-    """
+    
     if team_df.empty:
         return 0.0
 
@@ -228,7 +205,7 @@ def compute_team_injury_load(team_df: pd.DataFrame) -> float:
 
 
 def enrich_injuries(raw: list[dict], team_abbr: str) -> pd.DataFrame:
-    """Add tier, severity, and load columns to raw injury list."""
+    
     df = pd.DataFrame(raw)
     if df.empty:
         return df
@@ -242,20 +219,14 @@ def enrich_injuries(raw: list[dict], team_abbr: str) -> pd.DataFrame:
     return df.reset_index(drop=True)
 
 
-# ── Main collection logic ──────────────────────────────────────────────────────
+# Main collection logic 
 
 def collect_injury_reports(
     team1: str = "NYK",
     team2: str = "SAS",
     test_mode: bool = False,
 ) -> dict:
-    """
-    Collect and structure injury reports for both teams.
-
-    Returns dict with keys:
-        'injuries_df'   — full per-player injury table
-        'summary'       — per-team feature dict ready for classifier
-    """
+    
     log.info(f"Collecting injury reports: {team1} vs {team2} | test={test_mode}")
 
     if test_mode:
@@ -305,7 +276,7 @@ def collect_injury_reports(
     return {"injuries_df": injuries_df, "summary": summary}
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# CLI 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch NBA injury reports")

@@ -1,12 +1,3 @@
-"""
-Retroactive YouTube scraper for Conference Finals games.
-Run once to collect historical pre-game data.
-
-Usage:
-    python retroactive_scrape.py
-    python retroactive_scrape.py --max-videos 3 --max-comments 75
-"""
-
 import argparse
 import time
 from youtube_scraper import collect_pregame_comments

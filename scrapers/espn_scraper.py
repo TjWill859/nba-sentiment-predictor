@@ -1,14 +1,3 @@
-"""
-ESPN NBA article scraper.
-Uses ESPN's public JSON API (no auth required).
-
-Usage:
-    python espn_scraper.py                          # scrape for NYK vs SAS (default)
-    python espn_scraper.py --team1 NYK --team2 SAS  # specify teams
-    python espn_scraper.py --hours 48               # lookback window in hours
-    python espn_scraper.py --test                   # run with mock data (no network)
-"""
-
 import requests
 import pandas as pd
 import json
@@ -18,13 +7,12 @@ import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# Config 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data" / "raw"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-# ESPN's undocumented but stable public JSON API — no API key needed
 ESPN_NEWS_API = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news"
 ESPN_ARTICLE_API = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news/{article_id}"
 
@@ -59,7 +47,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-# ── Mock data for offline testing ─────────────────────────────────────────────
+# Mock data for offline testing 
 
 MOCK_ARTICLES = [
     {
@@ -100,7 +88,7 @@ MOCK_ARTICLES = [
 ]
 
 
-# ── ESPN API fetchers ─────────────────────────────────────────────────────────
+# ESPN API fetchers 
 
 def fetch_espn_news(limit: int = 50) -> list[dict]:
     """Fetch NBA news from ESPN's public JSON API."""
@@ -153,7 +141,7 @@ def parse_published_date(article: dict) -> datetime | None:
     return None
 
 
-# ── Relevance filtering ───────────────────────────────────────────────────────
+# Relevance filtering 
 
 def is_relevant(article: dict, keywords: list[str]) -> bool:
     combined = " ".join([
@@ -180,7 +168,7 @@ def team_relevance_tags(article: dict, team1: str, team2: str) -> str:
     return ",".join(tags)
 
 
-# ── Main collection logic ──────────────────────────────────────────────────────
+# Main collection logic
 
 def collect_pregame_articles(
     team1: str = "NYK",
@@ -189,20 +177,7 @@ def collect_pregame_articles(
     max_articles: int = 30,
     test_mode: bool = False,
 ) -> pd.DataFrame:
-    """
-    Collect ESPN articles mentioning team1 or team2 published within
-    the last `hours_back` hours.
 
-    Args:
-        team1:        Team 1 abbreviation (e.g. "NYK")
-        team2:        Team 2 abbreviation (e.g. "SAS")
-        hours_back:   How far back to look (pre-game collection window)
-        max_articles: Cap on articles to process
-        test_mode:    Use mock data instead of live network calls
-
-    Returns:
-        DataFrame saved to data/raw/
-    """
     kw1 = TEAM_KEYWORDS.get(team1.upper(), [team1.lower()])
     kw2 = TEAM_KEYWORDS.get(team2.upper(), [team2.lower()])
     all_keywords = kw1 + kw2
@@ -263,7 +238,7 @@ def collect_pregame_articles(
     return df
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# CLI 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Scrape ESPN NBA pre-game articles")

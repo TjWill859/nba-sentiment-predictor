@@ -1,19 +1,3 @@
-"""
-YouTube pre-game comment scraper.
-Searches for NBA Finals preview videos and collects comments as fan sentiment.
-
-Usage:
-    python youtube_scraper.py                          # Game 4 NYK vs SAS (default)
-    python youtube_scraper.py --team1 NYK --team2 SAS  # specify teams
-    python youtube_scraper.py --game 4                 # specify game number
-    python youtube_scraper.py --test                   # mock data, no API calls
-    python youtube_scraper.py --max-comments 150       # comments per video
-
-Setup:
-    cp .env.example .env
-    # Add your YouTube API key to .env
-"""
-
 import os
 import time
 import logging
@@ -26,7 +10,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from dotenv import load_dotenv
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# Config 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data" / "raw"
@@ -59,7 +43,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-# ── Mock data ─────────────────────────────────────────────────────────────────
+# Mock data 
 
 MOCK_VIDEOS = [
     {"video_id": "mock_v1", "title": "Knicks vs Spurs Game 4 Preview | NBA Finals 2026", "channel": "ESPN", "published_at": datetime.now(timezone.utc).isoformat(), "view_count": 142000},
@@ -87,7 +71,7 @@ MOCK_COMMENTS = {
 }
 
 
-# ── YouTube API helpers ───────────────────────────────────────────────────────
+# YouTube API helpers 
 
 def get_youtube_client():
     if not YOUTUBE_API_KEY:
@@ -104,10 +88,7 @@ def search_pregame_videos(
     max_results_per_query: int = 5,
     game_date: str | None = None,
 ) -> list[dict]:
-    """
-    Search YouTube for pre-game preview videos published within the lookback window.
-    Returns a deduplicated list of video metadata dicts.
-    """
+    
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours_back)
     published_before = None
     if game_date:
@@ -187,10 +168,7 @@ def fetch_comments_for_video(
     video_id: str,
     max_comments: int = 100,
 ) -> list[dict]:
-    """
-    Fetch top-level comments for a video, sorted by relevance (top comments first).
-    Returns list of comment dicts.
-    """
+    
     comments = []
     next_page_token = None
 
@@ -229,7 +207,7 @@ def fetch_comments_for_video(
     return comments
 
 
-# ── Main collection logic ──────────────────────────────────────────────────────
+# Main collection logic 
 
 def collect_pregame_comments(
     team1: str = "NYK",
@@ -241,12 +219,7 @@ def collect_pregame_comments(
     test_mode: bool = False,
     game_date: str | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """
-    Collect YouTube pre-game comments for a matchup.
-
-    Returns:
-        (videos_df, comments_df) — both saved to data/raw/
-    """
+    
     log.info(f"Collecting YouTube comments: {team1} vs {team2} Game {game_num} | test={test_mode}")
 
     if test_mode:
@@ -296,7 +269,7 @@ def collect_pregame_comments(
     return videos_df, comments_df
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# CLI 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Scrape YouTube pre-game comments for NBA sentiment")
