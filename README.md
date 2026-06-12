@@ -67,7 +67,7 @@ python predict.py
     nba_predictor/
     ├── scrapers/          # YouTube + ESPN + injury data scrapers
     ├── pipeline/          # Sentiment scoring, feature engineering, model training
-    ├── data/              # game_index.json (game metadata + result labels), scraped espn and youtube sentiment data
+    ├── data/              # game_index.json (game metadata + result labels)
     ├── predict.py         # Main prediction entry point
     ├── predictions        # predictions made before each game
     └── requirements.txt
