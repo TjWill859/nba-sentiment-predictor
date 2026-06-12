@@ -14,7 +14,5 @@ def train_model(game_index_path):
     # Train a logistic regression model
     model = LogisticRegression()
     model.fit(X, y)
-
-    print(model.score(X, y))
     
     return model

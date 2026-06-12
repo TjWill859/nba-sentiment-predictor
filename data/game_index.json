@@ -160,17 +160,7 @@
     "data_files": [
       "data/raw/espn/espn_NYK_SAS_20260609_1946.json",
       "data/raw/youtube/youtube_NYK_SAS_G4_20260609_1956_comments.json",
-      "data/raw/espn/espn_NYK_CLE_G3_20260611_1502.json"
-    ],
-    "result": 1
-  },
-  {
-    "game_id": "NYK_SAS_G4",
-    "date": "2026-06-13",
-    "home_team": "SAS",
-    "away_team": "NYK",
-    "data_files": [
-      
+      "data/raw/espn/espn_SAS_NYK_G4_20260611_1502.json"
     ],
     "result": null
   }
