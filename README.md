@@ -14,7 +14,7 @@ A machine learning pipeline that scrapes pre-game YouTube comments and ESPN arti
 
 ### Validation (Conference Finals)
 
-Logistic regression trained on sentiment-differential features achieved **57.1% accuracy** on Conference Finals games (n≈14), and is the model used for live Finals predictions below.
+Logistic regression trained on sentiment-differential features achieved **57.1% accuracy** on Conference Finals and 3 Finals games (n=14), and is the model used for live Finals predictions below.
 
 ### Live Finals Predictions (NYK vs. SAS)
 
@@ -69,10 +69,11 @@ python predict.py
     ├── pipeline/          # Sentiment scoring, feature engineering, model training
     ├── data/              # game_index.json (game metadata + result labels)
     ├── predict.py         # Main prediction entry point
+    ├── predictions        # predictions made before each game
     └── requirements.txt
 
 ## Context
 
-- **Training data:** 2026 Western and Eastern Conference Finals games
-- **Live evaluation:** 2026 NBA Finals (NYK vs. SAS), starting June 3
+- **Training data:** 2026 Western and Eastern Conference Finals games and first 3 Finals games
+- **Live evaluation:** 2026 NBA Finals (NYK vs. SAS), starting June 10
 - **Prediction target:** Binary win/loss outcome for the home team
